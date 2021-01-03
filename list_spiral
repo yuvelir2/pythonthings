@@ -1,0 +1,26 @@
+n = int(input())
+d = 0#размер уменьшения горизонтального ряда
+zn = 1
+a = [[0]*n for i in range(n)]
+a[n // 2][n // 2] = n * n
+for i in range(n // 2):
+    #top
+    for k in range(n - d):
+        a[i][k + i] = zn
+        zn += 1
+    #right
+    for k in range(i + 1, n - i - 1):
+        a[k][-i - 1] = zn
+        zn +=1      
+    #bot
+    for k in range(n - d):
+        a[-i - 1][-k - 1 - i] = zn
+        zn +=1
+    #left
+    for k in range(i + 1, n - i -1):
+        a[-k - 1][i] = zn
+        zn += 1
+    
+    d += 2
+for i in a:
+    print(*i)
