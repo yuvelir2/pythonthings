@@ -1,0 +1,23 @@
+#HACKERRANK Merge the Tools! task
+s = input()
+n = len(s)
+k = int(input())
+subs = ''
+varb = 0 # special variable for selecting parts of string
+cutter = [] # a list helping us to cut reccurring letters
+recur = False # create a variable that shows whether the letter has occurred more than 1 time 
+for i in range(n // k):
+    u_i = ''
+    # select the n/k part
+    for j in range(k):
+        subs += s[varb + j]
+        cutter += s[varb + j]
+    #cutting all the recurring letters
+    for j in range(len(subs)):
+        if (u_i.count(subs[j]) == 0):
+            u_i += subs[j]
+    print(u_i)
+    subs = ''
+    u_i = '' 
+    varb += k
+    cutter.clear()
